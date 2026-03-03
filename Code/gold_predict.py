@@ -10,12 +10,17 @@ DB_PATH = PROJECT_ROOT / "Silver" / "data.db"
 GOLD_PATH = PROJECT_ROOT / "Gold"
 GOLD_PATH.mkdir(exist_ok=True)
 
+MEASURE = "S_HH_TAX"   # <-- exemple, à adapter
+
 conn = sqlite3.connect(DB_PATH)
 
-# Exemple: prédiction pauvreté moyenne par année
 try:
     df = pd.read_sql("SELECT * FROM pauvrete_normalized", conn)
-    df["annee"] = pd.to_datetime(df["date"]).dt.year
+    df = df[df["measure"] == MEASURE]
+
+    df["annee"] = pd.to_datetime(df["date"], errors="coerce").dt.year
+    df = df.dropna(subset=["annee", "valeur"])
+
     df_group = df.groupby("annee")["valeur"].mean().reset_index()
 
     X = df_group["annee"].values.reshape(-1, 1)
@@ -29,14 +34,14 @@ try:
         pred = model.predict(X[test_idx])
         plt.plot(X[test_idx], pred, label=f"Split {i + 1} prediction")
 
-    plt.plot(X, y, 'o-', label="Réel")
-    plt.title("Prédiction pauvreté moyenne (CV temporelle)")
+    plt.plot(X, y, "o-", label="Réel")
+    plt.title(f"Prédiction ({MEASURE}) moyenne par année")
     plt.xlabel("Année")
     plt.ylabel("Valeur moyenne")
     plt.legend()
-    plt.savefig(GOLD_PATH / "pauvrete_prediction.png")
-    print("Modèle prédictif et graphique généré")
+    plt.savefig(GOLD_PATH / f"pauvrete_prediction_{MEASURE}.png")
+    print("✔ Modèle prédictif et graphique généré")
 except Exception as e:
-    print(f"Erreur modèle prédictif: {e}")
+    print(f"⚠ Erreur modèle prédictif: {e}")
 
 conn.close()
