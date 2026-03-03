@@ -35,8 +35,8 @@ try:
     plt.ylabel("Valeur moyenne")
     plt.legend()
     plt.savefig(GOLD_PATH / "pauvrete_prediction.png")
-    print("✔ Modèle prédictif et graphique généré")
+    print("Modèle prédictif et graphique généré")
 except Exception as e:
-    print(f"⚠ Erreur modèle prédictif: {e}")
+    print(f"Erreur modèle prédictif: {e}")
 
 conn.close()
