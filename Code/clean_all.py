@@ -1,29 +1,21 @@
 import os
-import zipfile
 import pandas as pd
 import unicodedata
 import re
 from pathlib import Path
 
 # ----------------------------
-# CONFIG
+# PATH CONFIG
 # ----------------------------
 
-ZIP_PATH = "MSPR2026---BLOC-3.zip"
-EXTRACT_PATH = "data_raw"
-OUTPUT_PATH = "data_normalized"
+# Chemin racine du projet (un niveau au-dessus de /Code/)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_PATH = PROJECT_ROOT / "normalized"
 
-os.makedirs(EXTRACT_PATH, exist_ok=True)
-os.makedirs(OUTPUT_PATH, exist_ok=True)
+OUTPUT_PATH.mkdir(exist_ok=True)
 
-# ----------------------------
-# EXTRACTION ZIP
-# ----------------------------
-
-with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
-    zip_ref.extractall(EXTRACT_PATH)
-
-print("ZIP extrait.")
+print(f"Projet détecté : {PROJECT_ROOT}")
+print(f"Dossier de sortie : {OUTPUT_PATH}")
 
 # ----------------------------
 # UTILS
@@ -76,17 +68,16 @@ def process_file(file_path):
     # ----------------------------
     # ELECTIONS
     # ----------------------------
-    if "municipales" in file_path.lower():
-        # Supprimer ratios recalculables
+    if "municipales" in str(file_path).lower():
         df = df[[c for c in df.columns if not c.startswith("ratio_")]]
-        df.to_csv(f"{OUTPUT_PATH}/{filename}_normalized.csv", index=False)
+        df.to_csv(OUTPUT_PATH / f"{filename}_normalized.csv", index=False)
         return
 
     # ----------------------------
     # PAUVRETE (déjà long)
     # ----------------------------
-    if "filosofi" in file_path.lower():
-        df.to_csv(f"{OUTPUT_PATH}/{filename}_normalized.csv", index=False)
+    if "filosofi" in str(file_path).lower():
+        df.to_csv(OUTPUT_PATH / f"{filename}_normalized.csv", index=False)
         return
 
     # ----------------------------
@@ -106,7 +97,7 @@ def process_file(file_path):
         )
         df_long["date"] = pd.to_datetime(df_long["annee"], errors="coerce")
         df_long.drop(columns=["annee"], inplace=True)
-        df_long.to_csv(f"{OUTPUT_PATH}/{filename}_normalized.csv", index=False)
+        df_long.to_csv(OUTPUT_PATH / f"{filename}_normalized.csv", index=False)
         return
 
     if month_cols:
@@ -119,23 +110,28 @@ def process_file(file_path):
         )
         df_long["date"] = pd.to_datetime(df_long["mois"], errors="coerce")
         df_long.drop(columns=["mois"], inplace=True)
-        df_long.to_csv(f"{OUTPUT_PATH}/{filename}_normalized.csv", index=False)
+        df_long.to_csv(OUTPUT_PATH / f"{filename}_normalized.csv", index=False)
         return
 
     # ----------------------------
     # DEFAULT
     # ----------------------------
-    df.to_csv(f"{OUTPUT_PATH}/{filename}_normalized.csv", index=False)
+    df.to_csv(OUTPUT_PATH / f"{filename}_normalized.csv", index=False)
 
 
 # ----------------------------
-# LOOP ALL FILES
+# LOOP ALL CSV (EXCEPT /Code/)
 # ----------------------------
 
-for root, dirs, files in os.walk(EXTRACT_PATH):
+for root, dirs, files in os.walk(PROJECT_ROOT):
+    
+    # Ignorer le dossier Code
+    if "Code" in root:
+        continue
+
     for file in files:
         if file.endswith(".csv"):
-            full_path = os.path.join(root, file)
+            full_path = Path(root) / file
             process_file(full_path)
 
-print("Tous les fichiers ont été nettoyés et normalisés.")
+print("\nTous les fichiers ont été nettoyés et normalisés.")
