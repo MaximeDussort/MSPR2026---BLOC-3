@@ -1,0 +1,132 @@
+Need for cleaning :
+- remove accent and set columns name to english
+- sometime first column is column name
+
+How are the CSVs not cleaned :
+
+Path : CSVs/
+IndicateursDActiviteEconomique/DescriptionsDesIndicateurs.csv :
+(Here columns names are in first row)
+INDICATOR_CODE, INDICATOR_NAME, SOURCE_NOTE, SOURCE_ORGANIZATION
+
+IndicateursDActiviteEconomique/IndicateursDuDeveloppementEnFrance.csv :
+Country Name, Country Code, Indicator Name, Indicator Code, 1960, 1961, 1962 [...] 2025
+
+IndicateursDeDemographie/DecesEtMortalite/2026/DecesEtMortalite2026caractéristiques.csv :
+idBank, Dernière mise à jour, Unité, Périodicité, Nature, Puissance, Zone géographique, Sexe, Âge, Catalogue d'indicateurs démographiques, Correction, Indicateur, Série arrêtée
+
+IndicateursDeDemographie/DecesEtMortalite/2026/DecesEtMortalite2026valeurs_annuelles.csv :
+(Here columns names are in first row)
+Libellé, idBank, Dernière mise à jour, Période, 1901, 1902, 1903 [...] 2025
+
+IndicateursDeDemographie/DecesEtMortalite/2026/DecesEtMortalite2026valeurs_mensuelles.csv :
+(Here columns names are in first row)
+Libellé, idBank, Dernière mise à jour, Période, 1946-01, 1946-02, 1946-03 [...] 2026-01
+
+IndicateursDeDemographie/MariagesnNuptialiteEtPactesCivilsDeSolidarite(Pacs)/2026/MariagesnNuptialiteEtPactesCivilsDeSolidarite2026caractéristiques.csv :
+idBank, Dernière mise à jour, Puissance, Zone géographique, Indicateur, Correction, Catalogue d'indicateurs démographiques, Série arrêtée, Nature, Périodicité, Unité
+
+IndicateursDeDemographie/MariagesnNuptialiteEtPactesCivilsDeSolidarite(Pacs)/2026/MariagesnNuptialiteEtPactesCivilsDeSolidarite2026valeurs_annuelles.csv :
+(Here columns names are in first row)
+Same as DecesEtMortalite2026valeurs_annuelles.csv
+
+IndicateursDeDemographie/MariagesnNuptialiteEtPactesCivilsDeSolidarite(Pacs)/2026/MariagesnNuptialiteEtPactesCivilsDeSolidarite2026valeurs_mensuelles.csv :
+(Here columns names are in first row)
+same as DecesEtMortalite2026valeurs_mensuelles.csv
+
+IndicateursDeDemographie/NaissancesEtFecondite/1946a2026/NaissancesEtFecondite1946a2026Caractéristiques.csv :
+idBank, Dernière mise à jour, Puissance, Zone géographique, Indicateur, Série arrêtée, Âge, Catalogue d'indicateurs démographiques, Indicateur, Correction, Nature, Périodicité, Unité
+
+IndicateursDeDemographie/NaissancesEtFecondite/1946a2026/NaissancesEtFecondite1946a2026Valeurs_annuelles.csv :
+(Here columns names are in first row)
+Same as DecesEtMortalite2026valeurs_annuelles.csv
+
+IndicateursDeDemographie/NaissancesEtFecondite/1946a2026/NaissancesEtFecondite1946a2026Valeurs_mensuelles.csv :
+(Here columns names are in first row)
+Same as DecesEtMortalite2026valeurs_mensuelles.csv
+
+IndicateursDeDemographie/PopulationEtStructureDeLaPopulation/1901a2026/PopulationEtStructureDeLaPopulation1901a2026caractéristiques.csv
+idBank, Dernière mise à jour, Périodicité, Nature, Unité, Zone géographique, Puissance, Indicateur, Correction, Sexe, Âge, Catalogue d'indicateurs démographiques, Série arrêtée
+(Same as DecesEtMortalite2026caractéristiques.csv but not in same order)
+
+IndicateursDeDemographie/PopulationEtStructureDeLaPopulation/1901a2026/PopulationEtStructureDeLaPopulation1901a2026caractéristiques.csv
+
+IndicateursDeDemographie/PopulationEtStructureDeLaPopulation/1901a2026/PopulationEtStructureDeLaPopulation1901a2026valeurs_annuelles.csv
+
+IndicateursDeDemographie/PopulationEtStructureDeLaPopulation/1901a2026/PopulationEtStructureDeLaPopulation1901a2026valeurs_mensuelles.csv
+
+IndicateursDEmploi/2018/ChiffreEmploi.csv
+
+IndicateursDEmploi/2018/Nomanclature.csv
+
+IndicateursDEmploi/2019/ChiffreEmploi.csv
+
+IndicateursDEmploi/2019/Nomanclature.csv
+
+IndicateursDEmploi/2020/ChiffreEmploi.csv
+
+IndicateursDEmploi/2020/Nomanclature.csv
+
+IndicateursDEmploi/2021/ChiffreEmploi.csv
+
+IndicateursDEmploi/2021/Nomanclature.csv
+
+IndicateursDEmploi/2022/ChiffreEmploi.csv
+
+IndicateursDEmploi/2022/Nomanclature.csv
+
+IndicateursDEmploi/2023/ChiffreEmploi.csv
+
+IndicateursDEmploi/2023/Nomanclature.csv
+
+IndicateursDePauvrete/2021/Pauvrete2021.csv
+
+IndicateursDePauvrete/2021/Pauvrete2021metadata.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2002/PremierTour/legislatives2002t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2002/SecondTour/legislatives2002t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2007/PremierTour/legislatives2007t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2007/SecondTour/legislatives2007t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2012/PremierTour/legislatives2012t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2012/SecondTour/legislatives2012t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2017/PremierTour/legislatives2017t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2017/SecondTour/legislatives2017t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2022/PremierTour/legislatives2022t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2022/SecondTour/legislatives2022t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2024/PremierTour/legislatives2024t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsLegislatives/2024/SecondTour/legislatives2024t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2008/PremierTour/municipales2008t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2008/SecondTour/municipales2008t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2014/PremierTour/municipales2014t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2014/SecondTour/municipales2014t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2020/PremierTour/municipales2020t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsMunicipales/2020/SecondTour/municipales2020t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2002/PremierTour/presidentielle2002t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2002/SecondTour/presidentielle2002t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2007/PremierTour/presidentielle2007t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2007/SecondTour/presidentielle2007t2.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2022/PremierTour/presidentielle2022t1.csv
+
+ResultatsElectoraux/DonneesDesElectionsPresidentielles/2022/SecondTour/presidentielle2022t2.csv
